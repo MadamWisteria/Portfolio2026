@@ -104,10 +104,24 @@
             display: inline-block;
         }
 
-        /* Grid for Languages and Hobbies */
+        .exp-title {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .exp-subtitle {
+            color: var(--electric-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Grid for Languages, Hobbies, and Skills */
         .flex-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            /* Updated for three columns and better responsiveness */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -166,7 +180,6 @@
         }
 
         @media (max-width: 650px) {
-            .flex-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
         }
     </style>
@@ -176,7 +189,7 @@
 <div class="container">
     <header>
         <h1>Kiara Tshabalala</h1>
-        <p class="sub-header">Cape Town, South Africa | Software Engineering | Cloud Practitioner</p>
+        <p class="sub-header">Cape Town, South Africa | Cloud Practitioner </p>
     </header>
 
     <section>
@@ -202,10 +215,45 @@
         </div>
     </section>
 
+    <section>
+        <div class="section-header">
+            <div class="purple-bar"></div>
+            <h2>Experience</h2>
+        </div>
+        
+        <div class="content-box" style="margin-bottom: 20px;">
+            <div class="exp-title">AWS Cloud Resume</div>
+            <div class="exp-subtitle">Personal Project | March 2026</div>
+            Used AWS to create a static website to host my HTML Cloud Resume.
+        </div>
+
+        <div class="content-box" style="margin-bottom: 20px;">
+            <div class="exp-title">Junior AI Co-Ordinator</div>
+            <div class="exp-subtitle">RLabs *Reconstructed Living Labs | February 2026 to Present</div>
+            Assist in implementing AI tools, automating workflows, and managing AI-driven projects, acting as a bridge between technical teams and business operations.
+        </div>
+
+        <div class="content-box" style="margin-bottom: 20px;">
+            <div class="exp-title">Cloud Engineering Intern</div>
+            <div class="exp-subtitle">Skills Accelerator | September 2025 to Present</div>
+            Was taught cloud technologies and tools according to real-world scenarios.
+        </div>
+
+        <div class="content-box">
+            <div class="exp-title">Software Development</div>
+            <div class="exp-subtitle">Freelance Projects | January 2024 to December 2024</div>
+            Designed and implemented a desktop application using Pascal. Further strengthened programming skills through hands-on projects.
+        </div>
+    </section>
+
     <div class="flex-grid">
         <div class="info-card">
             <h3>Coding Languages</h3>
             <p>Pascal, Basic Python, Basic HTML</p>
+        </div>
+        <div class="info-card">
+            <h3>Skills</h3>
+            <p>Technical Proficiency, Communication, Problem Solving, Time Management</p>
         </div>
         <div class="info-card">
             <h3>Hobbies</h3>
@@ -221,6 +269,11 @@
         <div class="quote-box">
             "I strive to one day hone my abilities in the tech field and have my own tech start-up."
         </div>
+
+        <div class="content-box" style="margin-top: 20px; text-align: center;">
+            <p style="margin: 0; font-weight: 600; color: var(--electric-blue);">Visitor Traffic</p>
+            <p id="counter" style="margin: 5px 0 0 0; font-size: 1.2rem; font-weight: 700; color: var(--white);">Loading views...</p> 
+        </div>
     </section>
 
     <footer>
@@ -234,6 +287,23 @@
         </div>
     </footer>
 </div>
+
+<script>
+    const apiEndpoint = 'https://ogsmke4g5c3wfizbunogvrkgyi0kzdwa.lambda-url.eu-north-1.on.aws/';
+
+    async function updateCounter() {
+        try {
+            let response = await fetch(apiEndpoint);
+            let data = await response.json();
+            document.getElementById('counter').innerText = `Views: ${data.count}`;
+        } catch (error) {
+            console.error("Oops! Couldn't fetch the visitor count:", error);
+            document.getElementById('counter').innerText = "View count unavailable";
+        }
+    }
+
+    updateCounter();
+</script>
 
 </body>
 </html>
