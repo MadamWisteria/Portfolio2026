@@ -3,7 +3,7 @@ Serverless Cloud Resume & Visitor Counter
 A high-performance, responsive portfolio website hosted on AWS using a completely serverless architecture. This project demonstrates full-stack cloud integration, featuring a live visitor counter powered by Python, Lambda, and DynamoDB.
 
 🚀 Live Demo
-[http://d5e9r83139lcl.cloudfront.net](url)
+[d2bozrp3q7x45i.cloudfront.net](url)
 
 🏗️ The Architecture
 The project follows a "Decoupled" architecture to ensure speed, security, and scalability:
